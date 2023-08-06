@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./styles.css";
 
 const InsertarProveedor = ({ onAddProveedor, onClose }) => {
   const [proveedor, setProveedor] = useState({
@@ -45,7 +46,9 @@ const InsertarProveedor = ({ onAddProveedor, onClose }) => {
       if (err.response && err.response.status === 409) {
         setError("El proveedor ya está registrado.");
       } else {
-        setError("Error al agregar el proveedor. Inténtalo de nuevo más tarde.");
+        setError(
+          "Error al agregar el proveedor. Inténtalo de nuevo más tarde."
+        );
       }
     }
   };
@@ -81,10 +84,10 @@ const InsertarProveedor = ({ onAddProveedor, onClose }) => {
             name="PROVE_CONTACTO"
           />
         </div>
-        <button onClick={handleClick} className="add-button">
+        <button onClick={handleClick} className="button add-button">
           Añadir
         </button>
-        <button onClick={onClose} className="cancel-button">
+        <button onClick={onClose} className="button cancel-button">
           Cancelar
         </button>
         {error && <p className="error-message">{error}</p>}

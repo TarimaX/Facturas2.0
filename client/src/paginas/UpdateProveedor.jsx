@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./styles.css"
 
 const UpdateProveedor = ({ proveedor, onUpdateProveedor, onClose }) => {
   const [updatedProveedor, setUpdatedProveedor] = useState({
@@ -9,23 +10,28 @@ const UpdateProveedor = ({ proveedor, onUpdateProveedor, onClose }) => {
   });
 
   const handleChange = (e) => {
-    setUpdatedProveedor((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setUpdatedProveedor((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8800/proveedor/${proveedor.PROVE_ID}`, updatedProveedor);
+      await axios.put(
+        `http://localhost:8800/proveedor/${proveedor.PROVE_ID}`,
+        updatedProveedor
+      );
       onUpdateProveedor(updatedProveedor); // Aquí se llama a la función onUpdateProveedor
       onClose();
     } catch (err) {
       console.log(err);
     }
   };
-  
 
   return (
-    <div>
+    <div className="update-form">
       <h1>Actualizar Proveedor</h1>
       <div>
         <label>Nombre del proveedor</label>
@@ -58,7 +64,9 @@ const UpdateProveedor = ({ proveedor, onUpdateProveedor, onClose }) => {
         />
       </div>
       <button onClick={handleClick}>Actualizar</button>
-      <button onClick={onClose}>Cancelar</button>
+      <button className="cancel-button" onClick={onClose}>
+        Cancelar
+      </button>
     </div>
   );
 };
