@@ -1,0 +1,126 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+    background-color: #f0f8ff; /* Fondo celeste pastel */
+  }
+  
+  .dashboard-container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    padding: 0;
+    min-height: 85vh;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .welcome-heading {
+    font-size: 40px;
+    font-weight: bold;
+    color: #007bff; /* Color azul */
+    background: linear-gradient(180deg, #007bff, #76aeeb); /* Degradado de azul a celeste */
+    -webkit-background-clip: text; /* Hace que el degradado solo afecte al texto */
+    -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente, mostrando el degradado */
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .welcome-heading1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff; /* Color azul */
+    background: linear-gradient(180deg, #007bff, #76aeeb); /* Degradado de azul a celeste */
+    -webkit-background-clip: text; /* Hace que el degradado solo afecte al texto */
+    -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente, mostrando el degradado */
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .content {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 5px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Ajustamos el margen superior a 20px */
+  }
+  
+  .text-container {
+    text-align: center; /* Centramos el texto */
+    margin-bottom: 35px; /* Añadimos espacio inferior */    
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #050505; /* Color gris oscuro */
+  }
+  
+  .add p{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #515151; /* Color gris oscuro */
+  }
+  
+  
+  .image-container {
+    animation: slideInRight 1s ease-in-out;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styles for the row containing the three elements */
+  .add {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Styles for each individual element */
+  .add-fact,
+  .add-base,
+  .add-time {
+    max-width: 400px;
+    border: 1px solid #9dbdde;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .add-fact img,
+  .add-base img,
+  .add-time img {
+    max-width: 100%;
+    max-height: 120px;
+    margin-bottom: 5px;
+  }
+  
+  /* Animación para los elementos .add-fact, .add-base y .add-time */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .add-fact,
+  .add-base,
+  .add-time {
+    animation: fadeInUp 1s ease-in-out;
+  }
+  

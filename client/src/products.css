@@ -1,0 +1,157 @@
+/*Estilos del inventario*/
+.show-products {
+  max-width: 1700px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-names,
+.product-card {
+  display: grid;
+  grid-template-columns: 200px 200px 100px 100px 400px;
+  grid-template-rows: auto;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 2px;
+}
+
+.name,
+.attribute {
+  margin: 5px;
+  padding: 5px;
+}
+
+.Insert-products{
+  max-width: 1500px;
+  margin: 10x;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.insert-p,
+.insert-c,
+.edit-p{
+  border: 1px solid black;
+  max-width: 400px;
+  min-height: 350px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin: 10px;
+}
+
+.form-column {
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.new-category-button {
+  height: 35px;
+  width: 200px;
+  background: blue;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  top:80%;
+  font-size: 15px;
+}
+
+.form-column input{
+  height: 15px;
+  width: 190px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin: 5px;
+  padding: 5px;
+}
+.form-column select{
+  height: 30px;
+  width: 200px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-button,
+.cancel-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+}
+
+/*Estilos de la Tienda*/
+
+.shop-product{
+  max-width: 1700px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-names-shop,
+.item-p{
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 2px;
+}
+
+.product-names-shop{
+  display: grid;
+  grid-template-columns: 200px 200px 200px 100px 300px;
+  grid-template-rows: auto;
+}
+
+.item-p{
+  display: grid;
+  grid-template-columns: 200px 400px 100px 300px;
+  grid-template-rows: auto;
+}
+
+.name-s,
+.attribute-s{
+  margin: 2px;
+  padding: 2px;
+}
+
+.attribute-s-d{
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: auto;
+}
+.subattribute{
+  margin: 5px;
+  padding: 3xp;
+}
