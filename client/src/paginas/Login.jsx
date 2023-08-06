@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import './Login.css';
+import "./Login.css";
 
 const Login = ({ setActuUser }) => {
   const [username, setUsername] = useState("");
@@ -57,41 +57,51 @@ const Login = ({ setActuUser }) => {
   };
 
   return (
-    <div>
-      <h1>Iniciar Sesión</h1>
-      {error && <p>{error}</p>}
-      {welcomeMessage && <p>{welcomeMessage}</p>}
-      {loggedInUser ? (
-        <div>
-          <p>Usuario: {loggedInUser.US_NOMBRE}</p>
-          <button onClick={handleLogout}>Cerrar Sesión</button>
-        </div>
-      ) : (
-        <form onSubmit={handleLogin}>
+    <div className="login-container">
+      <div className="login-form">
+        <h1 className="login-heading">Iniciar Sesión</h1>
+        {error && <p className="error-message">{error}</p>}
+        {welcomeMessage && <p className="welcome-message">{welcomeMessage}</p>}
+        {loggedInUser ? (
           <div>
-            <label htmlFor="username">Nombre de Usuario</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
+            <p>Usuario: {loggedInUser.US_NOMBRE}</p>
+            <button className="logout-button" onClick={handleLogout}>
+              Cerrar Sesión
+            </button>
           </div>
-          <div>
-            <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <Link to="/"><button type="submit">Iniciar Sesión</button></Link>
-        </form>
-      )}
-      <p>
-        ¿No tienes una cuenta? <Link to="/register">Registrate aquí!</Link>
-      </p>
+        ) : (
+          <form onSubmit={handleLogin}>
+            <div className="form-group">
+              <label htmlFor="username">Nombre de Usuario</label>
+              <input
+                type="text"
+                className="login-input"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Contraseña</label>
+              <input
+                type="password"
+                className="login-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <Link to="/">
+              <button className="login-button" type="submit">
+                Iniciar Sesión
+              </button>
+            </Link>
+          </form>
+        )}
+        <p className="register-link">
+          ¿No tienes una cuenta? <Link to="/register">Registrate aquí!</Link>
+        </p>
+      </div>
     </div>
   );
 };

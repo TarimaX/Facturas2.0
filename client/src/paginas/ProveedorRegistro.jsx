@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import InsertarProveedor from "./InsertarProveedor";
 import UpdateProveedor from "./UpdateProveedor";
+import "./styles.css";
 
 const ProveedorRegistro = () => {
   const [proveedores, setProveedores] = useState([]);
@@ -23,7 +24,11 @@ const ProveedorRegistro = () => {
   const handleDelete = async (proveedorId) => {
     try {
       await axios.delete(`http://localhost:8800/proveedor/${proveedorId}`);
-      setProveedores((prevProveedores) => prevProveedores.filter((proveedor) => proveedor.PROVE_ID !== proveedorId));
+      setProveedores((prevProveedores) =>
+        prevProveedores.filter(
+          (proveedor) => proveedor.PROVE_ID !== proveedorId
+        )
+      );
     } catch (err) {
       console.log(err);
     }
@@ -39,7 +44,9 @@ const ProveedorRegistro = () => {
   };
 
   const handleShowUpdate = (proveedorId) => {
-    const selected = proveedores.find((proveedor) => proveedor.PROVE_ID === proveedorId);
+    const selected = proveedores.find(
+      (proveedor) => proveedor.PROVE_ID === proveedorId
+    );
     setSelectedProveedor(selected);
   };
 
@@ -50,7 +57,9 @@ const ProveedorRegistro = () => {
   const handleUpdateProveedor = (updatedProveedor) => {
     setProveedores((prevProveedores) =>
       prevProveedores.map((proveedor) =>
-        proveedor.PROVE_ID === updatedProveedor.PROVE_ID ? updatedProveedor : proveedor
+        proveedor.PROVE_ID === updatedProveedor.PROVE_ID
+          ? updatedProveedor
+          : proveedor
       )
     );
   };
@@ -58,10 +67,10 @@ const ProveedorRegistro = () => {
   return (
     <div>
       <h1>PROVEEDORES REGISTRADOS</h1>
-      <button type="button" onClick={handleShowInsertar}>
+      <button className="button" type="button" onClick={handleShowInsertar}>
         Añadir Proveedor
       </button>
-      <table>
+      <table className="table-container">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -77,15 +86,30 @@ const ProveedorRegistro = () => {
               <td>{proveedor.PROVE_DIRECCION}</td>
               <td>{proveedor.PROVE_CONTACTO}</td>
               <td>
-                <button onClick={() => handleDelete(proveedor.PROVE_ID)}>Eliminar</button>
-                <button onClick={() => handleShowUpdate(proveedor.PROVE_ID)}>Editar</button>
+                <button
+                  className="button delete-button"
+                  onClick={() => handleDelete(proveedor.PROVE_ID)}
+                >
+                  Eliminar
+                </button>
+                <button
+                  className="button"
+                  onClick={() => handleShowUpdate(proveedor.PROVE_ID)}
+                >
+                  Editar
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {showInsertar && <InsertarProveedor onAddProveedor={handleAddProveedor} onClose={handleCloseInsertar} />}
+      {showInsertar && (
+        <InsertarProveedor
+          onAddProveedor={handleAddProveedor}
+          onClose={handleCloseInsertar}
+        />
+      )}
 
       {selectedProveedor && (
         <UpdateProveedor

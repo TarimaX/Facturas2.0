@@ -3,6 +3,7 @@ import axios from "axios";
 import InsertarCliente from "./InsertarCliente";
 import UpdateCliente from "./UpdateCliente";
 import dayjs from "dayjs";
+import './styles.css'
 
 const ClienteRegistro = () => {
   const [clientes, setClientes] = useState([]);
@@ -24,7 +25,9 @@ const ClienteRegistro = () => {
   const handleDelete = async (cedula) => {
     try {
       await axios.delete(`http://localhost:8800/cliente/${cedula}`);
-      setClientes((prevClientes) => prevClientes.filter((cliente) => cliente.CLI_CEDULA !== cedula));
+      setClientes((prevClientes) =>
+        prevClientes.filter((cliente) => cliente.CLI_CEDULA !== cedula)
+      );
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +43,9 @@ const ClienteRegistro = () => {
   };
 
   const handleShowUpdate = (cedulaCliente) => {
-    const selected = clientes.find((cliente) => cliente.CLI_CEDULA === cedulaCliente);
+    const selected = clientes.find(
+      (cliente) => cliente.CLI_CEDULA === cedulaCliente
+    );
     setSelectedClient(selected);
   };
 
@@ -51,7 +56,9 @@ const ClienteRegistro = () => {
   const handleUpdateClient = (updatedClient) => {
     setClientes((prevClientes) =>
       prevClientes.map((cliente) =>
-        cliente.CLI_CEDULA === updatedClient.CLI_CEDULA ? updatedClient : cliente
+        cliente.CLI_CEDULA === updatedClient.CLI_CEDULA
+          ? updatedClient
+          : cliente
       )
     );
   };
@@ -59,17 +66,17 @@ const ClienteRegistro = () => {
   return (
     <div>
       <h1>CLIENTES REGISTRADOS</h1>
-      <button type="button" onClick={handleShowInsertar}>
+      <button className="button" type="button" onClick={handleShowInsertar}>
         Añadir Cliente
       </button>
-      <table>
+      <table className="table-container">
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Cédula</th>
             <th>Dirección</th>
-            <th>Fecha de Nacimiento</th>            
+            <th>Fecha de Nacimiento</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -82,15 +89,30 @@ const ClienteRegistro = () => {
               <td>{cliente.CLI_DIRECCION}</td>
               <td>{dayjs(cliente.CLI_FECHA).format("DD/MM/YYYY")}</td>
               <td>
-                <button onClick={() => handleDelete(cliente.CLI_CEDULA)}>Eliminar</button>
-                <button onClick={() => handleShowUpdate(cliente.CLI_CEDULA)}>Editar</button>
+                <button
+                  className="button delete-button"
+                  onClick={() => handleDelete(cliente.CLI_CEDULA)}
+                >
+                  Eliminar
+                </button>
+                <button
+                  className="button"
+                  onClick={() => handleShowUpdate(cliente.CLI_CEDULA)}
+                >
+                  Editar
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {showInsertar && <InsertarCliente onAddClient={handleAddClient} onClose={handleCloseInsertar} />}
+      {showInsertar && (
+        <InsertarCliente
+          onAddClient={handleAddClient}
+          onClose={handleCloseInsertar}
+        />
+      )}
 
       {selectedClient && (
         <UpdateCliente
